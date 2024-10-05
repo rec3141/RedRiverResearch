@@ -1,7 +1,7 @@
 # University of Manitoba Wetlanders BirdNET-Pi Workshop 
 
 ## Workshop #1
-On 26 September 2024 Dr. Collins led the [UM Wetlanders](https://www.instagram.com/umwetlanders/) in building 8 bird listening boxes using Raspberry Pi's running BirdNET-Pi.
+On 21 September 2024 Dr. Collins led the [UM Wetlanders](https://www.instagram.com/umwetlanders/) in building 8 bird listening boxes using Raspberry Pi's running BirdNET-Pi. About 20 people joined!
 
 We used the tutorial at [pixcams.com](https://pixcams.com/building-a-birdnet-pi-real-time-acoustic-bird-id-station/), with a few alterations.
 
