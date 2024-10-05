@@ -1,17 +1,19 @@
 #!/bin/bash
 
+####install necessary packages and set up variables
+
+sudo apt-get install -y dnsutils uuid-runtime tmux
+
+tmux set-option default-command "/bin/bash"
+
 
 if [ "$INSIDE_TMUX" == "true" ]; then
 
 # run inside tmux session so it doesn't disconnect when resetting the network connections
 
-####install necessary packages and set up variables
+#### set up variables
 
 cd
-
-sudo apt-get install -y dnsutils uuid-runtime tmux
-
-tmux set-option default-command "/bin/bash"
 
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
