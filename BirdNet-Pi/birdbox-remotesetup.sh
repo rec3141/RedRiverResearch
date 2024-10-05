@@ -45,6 +45,8 @@ curl -o dynamicdns.bash https://raw.githubusercontent.com/clempaul/dreamhost-dyn
 
 chmod +x dynamicdns.bash
 
+echo ${DREAMHOST_API_KEY}
+
 ~/dynamicdns.bash -S -v -k ${DREAMHOST_API_KEY} -r $(hostname).${domainname}
 
 echo "@hourly ~/dynamicdns.bash -S -v -k ${DREAMHOST_API_KEY} -r $(hostname).${domainname}" > ~/.config/crontab.txt
