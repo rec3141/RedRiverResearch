@@ -61,7 +61,7 @@ chmod +x ~/.config/crontab.txt
 crontab ~/.config/crontab.txt
 
 echo "
-${hostname}.${domainname} {
+$(hostname).${domainname} {
 reverse_proxy $ipaddress:80
 }" | sudo tee -a /etc/caddy/Caddyfile
 
