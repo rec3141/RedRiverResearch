@@ -76,11 +76,11 @@ tmux attach-session -t mysession
 
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
-echo "MAC ADDRESS (WRITE THIS DOWN): $macaddress"
+echo "MAC ADDRESS: $macaddress"
 
 ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
 
-echo "IP ADDRESS (WRITE THIS DOWN): $ipaddress"
+echo "IP ADDRESS: $ipaddress"
 
 
 
