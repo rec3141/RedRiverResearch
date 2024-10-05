@@ -14,7 +14,7 @@ sudo apt-get install dnsutils uuid-runtime tmux
 
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | tr -s ' ' | cut -f2 -d' ')
 
-echo $macaddress #WRITE THIS DOWN, YOU'LL NEED IT LATER
+echo "MAC ADDRESS (WRITE THIS DOWN) $macaddress"
 
 ipaddress=192.168.0.161
 
