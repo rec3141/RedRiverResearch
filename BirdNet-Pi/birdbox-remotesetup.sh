@@ -65,13 +65,6 @@ reverse_proxy $ipaddress:80
 
 sudo systemctl restart caddy
 
-macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
-
-echo "MAC ADDRESS: $macaddress"
-
-ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
-
-echo "IP ADDRESS: $ipaddress"
 
 fi
 
@@ -82,6 +75,13 @@ tmux new-session -d -s mysession bash -c "INSIDE_TMUX=true ./birdbox-remotesetup
 # Attach to the session (optional)
 tmux attach-session -t mysession
 
+macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
+
+echo "MAC ADDRESS: $macaddress"
+
+ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
+
+echo "IP ADDRESS: $ipaddress"
 
 
 
