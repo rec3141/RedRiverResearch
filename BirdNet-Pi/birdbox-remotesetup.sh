@@ -62,8 +62,10 @@ echo "MAC ADDRESS: $macaddress"
 
 echo "IP ADDRESS: $ipaddress"
 
+sleep 30
 
 sudo systemctl restart caddy
+
 
 
 fi
