@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+if [ "$INSIDE_TMUX" == "true" ]; then
+
+# The rest of the script will run inside the tmux session
+
 ####install necessary packages and set up variables
 
 cd
@@ -14,18 +19,6 @@ ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut 
 
 echo "IP ADDRESS (WRITE THIS DOWN): $ipaddress"
 
-
-# Start a tmux session and run the rest of the script in that session
-tmux new-session -d -s mysession "bash $0 inside_tmux"  # Pass the script as an argument
-
-if [ "$1" == "inside_tmux" ]; then
-# The rest of the script will run inside the tmux session
-
-macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
-
-ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
-
-domainname=redriverresearch.ca
 
 #### this sets up the bird box to request a static ip address
 
@@ -70,6 +63,16 @@ sudo systemctl restart caddy
 exit 0
 
 fi
+
+
+# Start a tmux session and set the environment variable inside it
+tmux new-session -d -s mysession bash -c "INSIDE_TMUX=true ./birdbox-remotesetup.sh"
+
+# Attach to the session (optional)
+tmux attach-session -t mysession
+
+
+
 
 
 
