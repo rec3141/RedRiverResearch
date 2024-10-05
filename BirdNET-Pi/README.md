@@ -92,15 +92,15 @@ We currently have the only BirdNET-Pi stations in Manitoba, but we're hoping to 
 <img width="609" alt="image" src="https://github.com/user-attachments/assets/4816d071-1a76-4f65-9c4c-06755fffae40">
 
 ### Currently online
-[bobolink](bobolink.redriverresearch.ca)
-[mallard](mallard.redriverresearch.ca)
-[americancoot](americancoot.redriverresearch.ca)
-[canvasduck](canvasduck.redriverresearch.ca)
+[bobolink](https://bobolink.redriverresearch.ca)
+[mallard](https://mallard.redriverresearch.ca)
+[americancoot](https://americancoot.redriverresearch.ca)
+[canvasduck](https://canvasduck.redriverresearch.ca)
 
 ### Currently offline
-[kingfisher](kingfisher.redriverresearch.ca)
-[bluejay](bluejay.redriverresearch.ca)
-[ruddyduck](ruddyduck.redriverresearch.ca)
-[surfbird](surfbird.redriverresearch.ca)
+[kingfisher](https://kingfisher.redriverresearch.ca)
+[bluejay](https://bluejay.redriverresearch.ca)
+[ruddyduck](https://ruddyduck.redriverresearch.ca)
+[surfbird](https://surfbird.redriverresearch.ca)
 
 
