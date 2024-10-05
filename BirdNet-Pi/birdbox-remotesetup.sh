@@ -15,6 +15,7 @@ macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
 ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
 
+domainname=redriverresearch.ca
 
 #### this sets up the bird box to request a static ip address
 
@@ -41,7 +42,7 @@ curl -o dynamicdns.bash https://raw.githubusercontent.com/clempaul/dreamhost-dyn
 
 chmod +x dynamicdns.bash
 
-echo ${DREAMHOST_API_KEY}
+echo DREAMHOST_API_KEY=${DREAMHOST_API_KEY}
 
 ~/dynamicdns.bash -S -v -k ${DREAMHOST_API_KEY} -r $(hostname).${domainname}
 
