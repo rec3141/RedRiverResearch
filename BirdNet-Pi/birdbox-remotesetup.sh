@@ -11,6 +11,8 @@ cd
 
 sudo apt-get install -y dnsutils uuid-runtime tmux
 
+tmux set-option default-command "/bin/bash"
+
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
 ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
