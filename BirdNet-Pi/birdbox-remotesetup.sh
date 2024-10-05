@@ -48,7 +48,7 @@ curl -Os dynamicdns.bash https://raw.githubusercontent.com/clempaul/dreamhost-dy
 
 chmod +x dynamicdns.bash
 
-echo DREAMHOST_API_KEY=${DREAMHOST_API_KEY}
+echo DREAMHOST_API_KEY ${DREAMHOST_API_KEY}
 
 ~/dynamicdns.bash -S -v -k ${DREAMHOST_API_KEY} -r $(hostname).${domainname}
 
@@ -57,11 +57,6 @@ echo "@hourly ~/dynamicdns.bash -S -v -k ${DREAMHOST_API_KEY} -r $(hostname).${d
 chmod +x ~/.config/crontab.txt
 
 crontab ~/.config/crontab.txt
-
-echo "
-$(hostname).${domainname} {
-reverse_proxy $ipaddress:80
-}" | sudo tee -a /etc/caddy/Caddyfile
 
 sudo systemctl restart caddy
 
