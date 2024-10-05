@@ -65,7 +65,7 @@ fi
 
 
 # Start a tmux session and set the environment variable inside it
-tmux new-session -d -s mysession bash -c "INSIDE_TMUX=true ./birdbox-remotesetup.sh"
+tmux new-session -d -s mysession -e DREAMHOST_API_KEY=$DREAMHOST_API_KEY bash -c "INSIDE_TMUX=true ./birdbox-remotesetup.sh"
 
 # Attach to the session (optional)
 tmux attach-session -t mysession
