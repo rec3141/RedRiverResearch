@@ -6,6 +6,13 @@ sudo apt-get install -y dnsutils uuid-runtime tmux
 
 tmux set-option default-command "/bin/bash"
 
+macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
+
+echo "MAC ADDRESS: $macaddress"
+
+ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
+
+echo "IP ADDRESS: $ipaddress"
 
 if [ "$INSIDE_TMUX" == "true" ]; then
 
@@ -70,13 +77,7 @@ tmux new-session -d -s mysession -e DREAMHOST_API_KEY=$DREAMHOST_API_KEY bash -c
 # Attach to the session (optional)
 tmux attach-session -t mysession
 
-macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
-echo "MAC ADDRESS: $macaddress"
-
-ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
-
-echo "IP ADDRESS: $ipaddress"
 
 
 
