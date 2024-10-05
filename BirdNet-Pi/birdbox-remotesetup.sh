@@ -3,7 +3,7 @@
 
 if [ "$INSIDE_TMUX" == "true" ]; then
 
-# The rest of the script will run inside the tmux session
+# run inside tmux session so it doesn't disconnect when resetting the network connections
 
 ####install necessary packages and set up variables
 
@@ -16,6 +16,7 @@ macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
 
 domainname=redriverresearch.ca
+
 
 #### this sets up the bird box to request a static ip address
 
@@ -32,6 +33,7 @@ sudo nmcli connection modify $wifi ipv4.method manual
 sudo nmcli connection down $wifi
 
 sudo nmcli connection up $wifi
+
 
 
 #### this sets up the bird box to host its website on the redriverresearch.ca domain
@@ -59,7 +61,13 @@ reverse_proxy $ipaddress:80
 
 sudo systemctl restart caddy
 
-exit 0
+macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
+
+echo "MAC ADDRESS: $macaddress"
+
+ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
+
+echo "IP ADDRESS: $ipaddress"
 
 fi
 
@@ -71,13 +79,7 @@ tmux new-session -d -s mysession bash -c "INSIDE_TMUX=true ./birdbox-remotesetup
 tmux attach-session -t mysession
 
 
-macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
-echo "MAC ADDRESS: $macaddress"
-
-ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
-
-echo "IP ADDRESS: $ipaddress"
 
 
 
