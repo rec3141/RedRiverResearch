@@ -13,11 +13,7 @@ sudo apt-get install -y dnsutils uuid-runtime tmux
 
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
-echo "MAC ADDRESS (WRITE THIS DOWN): $macaddress"
-
 ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
-
-echo "IP ADDRESS (WRITE THIS DOWN): $ipaddress"
 
 
 #### this sets up the bird box to request a static ip address
