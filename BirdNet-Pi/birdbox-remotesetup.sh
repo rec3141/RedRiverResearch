@@ -1,17 +1,10 @@
 #!/bin/bash
 
-# Start a tmux session and run the rest of the script in that session
-tmux new-session -d -s mysession "bash $0 inside_tmux"  # Pass the script as an argument
-
-if [ "$1" == "inside_tmux" ]; then
-# The rest of the script will run inside the tmux session
-
-
 ####install necessary packages and set up variables
 
 cd
 
-sudo apt-get install dnsutils uuid-runtime tmux
+sudo apt-get install -y dnsutils uuid-runtime tmux
 
 macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
 
@@ -21,8 +14,18 @@ ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut 
 
 echo "IP ADDRESS (WRITE THIS DOWN): $ipaddress"
 
-domainname=redriverresearch.ca
 
+# Start a tmux session and run the rest of the script in that session
+tmux new-session -d -s mysession "bash $0 inside_tmux"  # Pass the script as an argument
+
+if [ "$1" == "inside_tmux" ]; then
+# The rest of the script will run inside the tmux session
+
+macaddress=$(nmcli device show wlan0 | grep GENERAL.HWADDR | awk '{print $2}')
+
+ipaddress=$(nmcli device show wlan0 | grep IP4.ADDRESS | awk '{print $2}' | cut -f1 -d'/')
+
+domainname=redriverresearch.ca
 
 #### this sets up the bird box to request a static ip address
 
